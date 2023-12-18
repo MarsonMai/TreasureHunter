@@ -61,10 +61,10 @@ public class Town {
         boolean canLeaveTown = terrain.canCrossTerrain(hunter);
         if (canLeaveTown) {
             String item = terrain.getNeededItem();
-            printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
+            printMessage = "You used your " + "\033[0;35m" + item + " to cross the " + terrain.getTerrainName() + "." + "\033[0m";
             if (checkItemBreak()) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, your " + item + " broke.";
+                printMessage += "\nUnfortunately, your " + "\033[0;35m" + item + " broke." + "\033[0m";
             }
 
             return true;
@@ -103,7 +103,7 @@ public class Town {
             int goldDiff = (int) (Math.random() * 10) + 1;
             if (Math.random() > noTroubleChance) {
                 printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
-                printMessage += "\nYou won the brawl and receive " + goldDiff + " gold.";
+                printMessage += "\nYou won the brawl and receive " + "\033[0;33m" + goldDiff + " gold." + "\033[0m";
                 hunter.changeGold(goldDiff);
             } else {
                 printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";

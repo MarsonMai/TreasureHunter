@@ -82,11 +82,11 @@ public class Shop {
      * @return the string representing the shop's items available for purchase and their prices.
      */
     public String inventory() {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
+        String str = "Water: " + "\033[0;35m" + WATER_COST + " gold\n" + "\033[0m";
+        str += "Rope: " + "\033[0;35m" + ROPE_COST + " gold\n" + "\033[0m";
+        str += "Machete: " + "\033[0;35m" + MACHETE_COST + " gold\n" + "\033[0m";
+        str += "Horse: " + "\033[0;35m" + HORSE_COST + " gold\n" + "\033[0m";
+        str += "Boat: " + "\033[0;35m" + BOAT_COST + " gold\n" + "\033[0m";
 
         return str;
     }
@@ -99,7 +99,7 @@ public class Shop {
     public void buyItem(String item) {
         int costOfItem = checkMarketPrice(item, true);
         if (customer.buyItem(item, costOfItem)) {
-            System.out.println("Ye' got yerself a " + item + ". Come again soon.");
+            System.out.println("Ye' got yerself a " + "\033[0;35m" + item + "\033[0m"+". Come again soon.");
         } else {
             System.out.println("Hmm, either you don't have enough gold or you've already got one of those!");
         }
