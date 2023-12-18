@@ -56,9 +56,9 @@ public class TreasureHunter {
             hunter.changeGold(90);
             hunter.addItem("rope");
             hunter.addItem("water");
-            hunter.addItem("Machete");
-            hunter.addItem("Boat");
-            hunter.addItem("Horse");
+            hunter.addItem("machete");
+            hunter.addItem("boat");
+            hunter.addItem("horse");
         }
     }
 
