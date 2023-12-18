@@ -48,10 +48,17 @@ public class TreasureHunter {
         // set hunter instance variable
         hunter = new Hunter(name, 10);
 
-        System.out.print("Hard mode? (y/n): ");
+        System.out.print("Choose the mode(normal,hard,test): ");
         String hard = SCANNER.nextLine().toLowerCase();
-        if (hard.equals("y")) {
+        if (hard.equals("h")) {
             hardMode = true;
+        } else if (hard.equals("test")) {
+            hunter.changeGold(90);
+            hunter.addItem("rope");
+            hunter.addItem("water");
+            hunter.addItem("Machete");
+            hunter.addItem("Boat");
+            hunter.addItem("Horse");
         }
     }
 
