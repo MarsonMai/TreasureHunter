@@ -61,7 +61,7 @@ public class Town {
         boolean canLeaveTown = terrain.canCrossTerrain(hunter);
         if (canLeaveTown) {
             String item = terrain.getNeededItem();
-            printMessage = "You used your " + "\033[0;35m" + item + " to cross the " + terrain.getTerrainName() + "." + "\033[0m";
+            printMessage = "You used your " + "\033[0;35m" + item + " to cross the " + "\033[0;36m" + terrain.getTerrainName() + "\033[0m"+"." + "\033[0m";
             if (checkItemBreak()) {
                 hunter.removeItemFromKit(item);
                 printMessage += "\nUnfortunately, your " + "\033[0;35m" + item + " broke." + "\033[0m";
@@ -97,24 +97,24 @@ public class Town {
         }
 
         if (Math.random() > noTroubleChance) {
-            printMessage = "You couldn't find any trouble";
+            printMessage = "\033[0;31m" + "You couldn't find any trouble" + "\033[0m";
         } else {
-            printMessage = "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
+            printMessage = "\033[0;31m" + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n" + "\033[0m";
             int goldDiff = (int) (Math.random() * 10) + 1;
             if (Math.random() > noTroubleChance) {
                 printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
-                printMessage += "\nYou won the brawl and receive " + "\033[0;33m" + goldDiff + " gold." + "\033[0m";
+                printMessage += "\033[0;31m" + "\nYou won the brawl and receive " + "\033[0;33m" + goldDiff  + " gold." + "\033[0m";
                 hunter.changeGold(goldDiff);
             } else {
-                printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
-                printMessage += "\nYou lost the brawl and pay " + goldDiff + " gold.";
+                printMessage += "\033[0;31m" + "That'll teach you to go lookin' fer trouble in MY town! Now pay up!" + "\033[0m";
+                printMessage += "\033[0;31m" + "\nYou lost the brawl and pay "+ "\033[0;33m" + goldDiff  + " gold." + "\033[0m";
                 hunter.changeGold(-goldDiff);
             }
         }
     }
 
     public String toString() {
-        return "This nice little town is surrounded by " + terrain.getTerrainName() + ".";
+        return "This nice little town is surrounded by " + "\033[0;36m" + terrain.getTerrainName() + "\033[0m" + ".";
     }
 
     /**

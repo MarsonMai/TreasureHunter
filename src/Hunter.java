@@ -134,7 +134,7 @@ public class Hunter {
 
         for (String item : kit) {
             if (item != null) {
-                printableKit += item + space;
+                printableKit += "\033[0;35m" + item + "\033[0m"+ space;
             }
         }
 
