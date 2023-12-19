@@ -50,20 +50,22 @@ public class TreasureHunter {
         // set hunter instance variable
         hunter = new Hunter(name, 10);
 
-        System.out.print("Choose the mode(normal,hard,test): ");
+        System.out.print("Choose the mode(easy,normal,hard,test): ");
         String hard = SCANNER.nextLine().toLowerCase();
         if (hard.equals("h")) {
             hardMode = true;
-        } else if (hard.equals("test")) {
+        } else if (hard.equals("t")) {
             hunter.changeGold(90);
             hunter.addItem("rope");
             hunter.addItem("water");
             hunter.addItem("machete");
             hunter.addItem("boat");
             hunter.addItem("horse");
+            hunter.addItem("boots");
         } else if (hard.equals("e")) {
-                easyMode = true;
-                hunter.changeGold(10);
+            easyMode = true;
+            hunter.changeGold(10);
+
         }
     }
 
@@ -109,8 +111,8 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
-
         while (!choice.equals("x")) {
+
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -125,6 +127,11 @@ public class TreasureHunter {
             System.out.print("What's your next move? ");
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
+            if (hunter.getGold() < 0) {
+                System.out.println("You have " + hunter.getGold());
+                System.out.println("You lose(ran out of gold)!");
+                choice = "x";
+            }
         }
     }
 

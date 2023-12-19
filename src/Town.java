@@ -104,13 +104,14 @@ public class Town {
             printMessage = "\033[0;31m" + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n" + "\033[0m";
             int goldDiff = (int) (Math.random() * 10) + 1;
             if (Math.random() > noTroubleChance) {
-                printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
+                printMessage += "\033[0;31m" + "Okay, stranger! You proved yer mettle. Here, take my gold." + "\033[0m";
                 printMessage += "\033[0;31m" + "\nYou won the brawl and receive " + "\033[0;33m" + goldDiff  + " gold." + "\033[0m";
                 hunter.changeGold(goldDiff);
             } else {
                 printMessage += "\033[0;31m" + "That'll teach you to go lookin' fer trouble in MY town! Now pay up!" + "\033[0m";
                 printMessage += "\033[0;31m" + "\nYou lost the brawl and pay "+ "\033[0;33m" + goldDiff  + " gold." + "\033[0m";
                 hunter.changeGold(-goldDiff);
+
             }
         }
     }
@@ -125,15 +126,17 @@ public class Town {
      * @return A Terrain object.
      */
     private Terrain getNewTerrain() {
-        double rnd = Math.random();
-        if (rnd < .2) {
+        double rnd =  (int) (Math.random() * 6) + 1;
+        if (rnd == 1) {
             return new Terrain("Mountains", "Rope");
-        } else if (rnd < .4) {
+        } else if (rnd == 2) {
             return new Terrain("Ocean", "Boat");
-        } else if (rnd < .6) {
+        } else if (rnd == 3) {
             return new Terrain("Plains", "Horse");
-        } else if (rnd < .8) {
+        } else if (rnd == 4) {
             return new Terrain("Desert", "Water");
+        } else if (rnd == 5) {
+            return new Terrain("Marsh","boots");
         } else {
             return new Terrain("Jungle", "Machete");
         }
