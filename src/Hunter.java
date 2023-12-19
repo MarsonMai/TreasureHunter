@@ -26,6 +26,9 @@ public class Hunter {
     public String getHunterName() {
         return hunterName;
     }
+    public int Getgold() {
+        return gold;
+    }
 
     /**
      * Updates the amount of gold the hunter has.
@@ -34,9 +37,6 @@ public class Hunter {
      */
     public void changeGold(int modifier) {
         gold += modifier;
-        if (gold < 0) {
-            gold = 0;
-        }
     }
 
     /**

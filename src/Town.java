@@ -109,6 +109,7 @@ public class Town {
                 printMessage += "\033[0;31m" + "That'll teach you to go lookin' fer trouble in MY town! Now pay up!" + "\033[0m";
                 printMessage += "\033[0;31m" + "\nYou lost the brawl and pay "+ "\033[0;33m" + goldDiff  + " gold." + "\033[0m";
                 hunter.changeGold(-goldDiff);
+
             }
         }
     }
