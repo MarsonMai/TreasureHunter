@@ -26,7 +26,7 @@ public class Hunter {
     public String getHunterName() {
         return hunterName;
     }
-    public int Getgold() {
+    public int getGold() {
         return gold;
     }
 

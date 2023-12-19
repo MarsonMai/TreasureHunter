@@ -59,6 +59,7 @@ public class TreasureHunter {
             hunter.addItem("machete");
             hunter.addItem("boat");
             hunter.addItem("horse");
+            hunter.addItem("boots");
         }
     }
 
@@ -101,6 +102,7 @@ public class TreasureHunter {
     private void showMenu() {
         String choice = "";
         while (!choice.equals("x")) {
+
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -115,7 +117,8 @@ public class TreasureHunter {
             System.out.print("What's your next move? ");
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
-            if (hunter.Getgold() < 0) {
+            if (hunter.getGold() < 0) {
+                System.out.println("You have " + hunter.getGold());
                 System.out.println("You lose(ran out of gold)!");
                 choice = "x";
             }
@@ -137,6 +140,11 @@ public class TreasureHunter {
             }
         } else if (choice.equals("l")) {
             currentTown.lookForTrouble();
+            if (hunter.getGold() < 0) {
+                System.out.println("You have " + hunter.getGold());
+                System.out.println("You lose(ran out of gold)!");
+                choice = "x";
+            }
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         } else {
