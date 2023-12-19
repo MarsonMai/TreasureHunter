@@ -17,6 +17,8 @@ public class TreasureHunter {
     private Hunter hunter;
     private boolean hardMode;
 
+    private boolean easyMode;
+
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -59,6 +61,9 @@ public class TreasureHunter {
             hunter.addItem("machete");
             hunter.addItem("boat");
             hunter.addItem("horse");
+        } else if (hard.equals("e")) {
+                easyMode = true;
+                hunter.changeGold(10);
         }
     }
 
@@ -74,6 +79,10 @@ public class TreasureHunter {
 
             // and the town is "tougher"
             toughness = 0.75;
+        } else if (easyMode) {
+            markdown = 0;
+            toughness = 0.2;
+
         }
 
         // note that we don't need to access the Shop object
@@ -84,7 +93,7 @@ public class TreasureHunter {
         // creating the new Town -- which we need to store as an instance
         // variable in this class, since we need to access the Town
         // object in other methods of this class
-        currentTown = new Town(shop, toughness);
+        currentTown = new Town(shop, toughness, easyMode);
 
         // calling the hunterArrives method, which takes the Hunter
         // as a parameter; note this also could have been done in the
