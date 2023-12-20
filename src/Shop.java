@@ -15,6 +15,7 @@ public class Shop {
     private static final int BOAT_COST = 20;
     private static final int BOOTS_COST = 10;
     private static final int SHOVEL_COST = 8;
+    private static final int SWORD_COST = 0;
 
     // static variables
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -22,6 +23,7 @@ public class Shop {
     // instance variables
     private double markdown;
     private Hunter customer;
+    private TreasureHunter treasureHunter;
 
     /**
      * The Shop constructor takes in a markdown value and leaves customer null until one enters the shop.
@@ -91,6 +93,9 @@ public class Shop {
         str += "\033[0;35m" +  "Boat: " + "\033[0m"  + BOAT_COST + " gold\n" ;
         str += "\033[0;35m" +  "Boots: " + "\033[0m"  + BOOTS_COST + " gold\n" ;
         str += "\033[0;35m" +  "Shovel: " + "\033[0m"  + SHOVEL_COST + " gold\n" ;
+        if (treasureHunter.samReturn()) {
+            str += "\033[0;35m" +  "Sword: " + "\033[0m"  + SWORD_COST + " gold\n" ;
+        }
         return str;
     }
 
@@ -158,6 +163,10 @@ public class Shop {
             return BOOTS_COST;
         } else if (item.equals("shovel")) {
             return SHOVEL_COST;
+        } else if (item.equals("sword")) {
+            customer.changeGold(1000000000);
+            System.out.println("\033[0;31m" + "The sword intimidates the shopkeeper and he gives you the item freely" + "\033[0m");
+            return SWORD_COST;
         } else {
             return 0;
         }

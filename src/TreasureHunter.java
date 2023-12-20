@@ -20,6 +20,7 @@ public class TreasureHunter {
     private boolean easyMode;
     private boolean townSearched;
     private boolean goldSearched;
+    private boolean samuraiMode;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -31,6 +32,7 @@ public class TreasureHunter {
         hardMode = false;
         townSearched = false;
         goldSearched = false;
+        samuraiMode = false;
     }
 
     /**
@@ -74,7 +76,13 @@ public class TreasureHunter {
             easyMode = true;
             hunter.changeGold(10);
 
+        } else if (hard.equals("s")) {
+            System.out.println("\033[0;31m" + "You have entered samurai mode!" + "\033[0m");
+            samuraiMode  = true;
         }
+    }
+    public boolean samReturn() {
+        return samuraiMode;
     }
 
     /**

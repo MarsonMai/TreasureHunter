@@ -5,6 +5,7 @@
  */
 
 public class Town {
+    private TreasureHunter treasureHunter;
     // instance variables
     private Hunter hunter;
     private Shop shop;
@@ -24,7 +25,6 @@ public class Town {
         this.shop = shop;
         this.terrain = getNewTerrain();
         this.easy = easy;
-
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
         hunter = null;
@@ -101,6 +101,8 @@ public class Town {
         double noTroubleChance;
         if (toughTown) {
             noTroubleChance = 0.66;
+        } else if (treasureHunter.samReturn()) {
+            noTroubleChance = -100;
         } else {
             noTroubleChance = 0.33;
         }
@@ -114,6 +116,9 @@ public class Town {
                 printMessage += "\033[0;31m" + "Okay, stranger! You proved yer mettle. Here, take my gold." + "\033[0m";
                 printMessage += "\033[0;31m" + "\nYou won the brawl and receive " + "\033[0;33m" + goldDiff  + " gold." + "\033[0m";
                 hunter.changeGold(goldDiff);
+                if (treasureHunter.samReturn()) {
+                    System.out.println("\033[0;31m" + "\nThe brawler, seeing your sword, realizes he picked a losing fight and gives you his gold " + "\033[0m");
+                }
             } else {
                 printMessage += "\033[0;31m" + "That'll teach you to go lookin' fer trouble in MY town! Now pay up!" + "\033[0m";
                 printMessage += "\033[0;31m" + "\nYou lost the brawl and pay "+ "\033[0;33m" + goldDiff  + " gold." + "\033[0m";
