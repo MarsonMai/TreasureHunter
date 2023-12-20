@@ -66,7 +66,12 @@ public class Town {
             printMessage = "You used your " + "\033[0;35m" + item + " to cross the " + "\033[0;36m" + terrain.getTerrainName() + "\033[0m"+"." + "\033[0m";
             if (checkItemBreak()) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, your " + "\033[0;35m" + item + " broke." + "\033[0m";
+                if(item.equals("horse") || item.equals("rope")){
+                    printMessage += "\nUnfortunately, you lost your " + "\033[0;35m" + item  + "\033[0m";
+                }
+                else{
+                    printMessage += "\nUnfortunately, your " + "\033[0;35m" + item + " broke." + "\033[0m";
+                }
             }
 
             return true;
@@ -83,6 +88,7 @@ public class Town {
      */
     public void enterShop(String choice) {
         shop.enter(hunter, choice);
+        printMessage = "";
     }
 
     /**
