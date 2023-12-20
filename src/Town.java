@@ -115,6 +115,21 @@ public class Town {
             }
         }
     }
+    public void hunt() {
+        int rand = (int) (Math.random() * 4) + 1;
+            if (rand == 1) {
+                System.out.println("You have found a crown!");
+                hunter.addItem("crown");
+            } else if (rand == 2) {
+                System.out.println("You have found a trophy!");
+                hunter.addItem("trophy");
+            } else if (rand == 3) {
+                System.out.println("You have found gem!");
+                hunter.addItem("gem");
+            } else {
+                System.out.println("You have found dust!");
+            }
+    }
 
     public String toString() {
         return "This nice little town is surrounded by " + "\033[0;36m" + terrain.getTerrainName() + "\033[0m" + ".";
