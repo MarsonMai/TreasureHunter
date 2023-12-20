@@ -145,6 +145,7 @@ public class Hunter {
      * @return A string representation of the hunter.
      */
     public String toString() {
+
         String str = hunterName + " has " + "\033[0;33m" + gold + " gold" + "\033[0m";
         if (!kitIsEmpty()) {
             str += " and " + getInventory();
