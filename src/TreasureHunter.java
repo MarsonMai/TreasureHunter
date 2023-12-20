@@ -18,6 +18,7 @@ public class TreasureHunter {
     private boolean hardMode;
 
     private boolean easyMode;
+    private boolean townSearched;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -27,6 +28,7 @@ public class TreasureHunter {
         currentTown = null;
         hunter = null;
         hardMode = false;
+        townSearched = false;
     }
 
     /**
@@ -142,7 +144,6 @@ public class TreasureHunter {
      * @param choice The action to process.
      */
     private void processChoice(String choice) {
-        boolean townSearched = false;
         if (choice.equals("b") || choice.equals("s")) {
             currentTown.enterShop(choice);
         } else if (choice.equals("h")) {
