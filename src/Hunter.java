@@ -10,6 +10,8 @@ public class Hunter {
     private String[] kit;
 
     private String[] treasure;
+
+    private String[] endGoal;
     private int gold;
 
     /**
@@ -23,6 +25,7 @@ public class Hunter {
         kit = new String[100]; // only 5 possible items can be stored in kit
         gold = startingGold;
         treasure = new String[100];
+        endGoal = new String[]{"crown", "trophy", "gem"};
     }
 
     //Accessors
@@ -186,7 +189,7 @@ public class Hunter {
         if (!kitIsEmpty()) {
             str += " and " + getInventory();
         }
-        str += "Treasures found: " + getTreasure();
+        str += "\n" + "Treasures found: " + getTreasure();
         return str;
     }
 

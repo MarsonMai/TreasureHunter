@@ -42,6 +42,10 @@ public class TreasureHunter {
         showMenu();
     }
 
+    private void endGame(){
+
+    }
+
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
      */

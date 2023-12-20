@@ -12,6 +12,7 @@ public class Town {
     private String printMessage;
     private boolean toughTown;
     private boolean easy;
+    private boolean gameEnd = false;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -135,7 +136,12 @@ public class Town {
             } else {
                 System.out.println("You have found dust!");
             }
+            if(hunter.getTreasure().contains("gem") && hunter.getTreasure().contains("crown")  && hunter.getTreasure().contains("trophy")){
+                System.out.println("Congratulations, you have found the last of the three treasures, you win!");
+                gameEnd = true;
+            }
     }
+
     public void dig() {
         int randGold = (int) (Math.random() * 20) + 1;
         int randDig = (int) (Math.random() * 2) + 1;
