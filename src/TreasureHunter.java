@@ -19,6 +19,7 @@ public class TreasureHunter {
 
     private boolean easyMode;
     private boolean townSearched;
+    private boolean goldSearched;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -29,6 +30,7 @@ public class TreasureHunter {
         hunter = null;
         hardMode = false;
         townSearched = false;
+        goldSearched = false;
     }
 
     /**
@@ -125,6 +127,7 @@ public class TreasureHunter {
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
             System.out.println("(H)unt for treasure!");
+            System.out.println("(D)ig for treasure!");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
             System.out.print("What's your next move? ");
@@ -156,6 +159,7 @@ public class TreasureHunter {
         } else if (choice.equals("m")) {
                 if (currentTown.leaveTown()) {
                     townSearched = false;
+                    goldSearched = false;
                     // This town is going away so print its news ahead of time.
                     System.out.println(currentTown.getLatestNews());
                     enterTown();
@@ -164,6 +168,13 @@ public class TreasureHunter {
                 currentTown.lookForTrouble();
             } else if (choice.equals("x")) {
                 System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
+            } else if (choice.equals("d")) {
+                if (!goldSearched) {
+                    currentTown.dig();
+                    goldSearched = true;
+                } else {
+                    System.out.println("You have dug for gold in this town already!");
+                }
             } else {
                 System.out.println("Yikes! That's an invalid option! Try again.");
             }

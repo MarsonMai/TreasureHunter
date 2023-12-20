@@ -122,7 +122,7 @@ public class Town {
         }
     }
     public void hunt() {
-        int rand = (int) (Math.random() * 4) + 1;
+        int rand = (int) (Math.random() * 3) + 1;
             if (rand == 1) {
                 System.out.println("You have found a crown!");
                 hunter.addTreasure("crown");
@@ -135,6 +135,20 @@ public class Town {
             } else {
                 System.out.println("You have found dust!");
             }
+    }
+    public void dig() {
+        int randGold = (int) (Math.random() * 20) + 1;
+        int randDig = (int) (Math.random() * 2) + 1;
+        if (hunter.hasItemInKit("shovel")) {
+            if (randDig > 1) {
+                System.out.println("You have dug out " + randGold + " gold!");
+                hunter.changeGold(randGold);
+            } else {
+                System.out.println("You dug but only found dirt!");
+            }
+        } else {
+            System.out.println("You need a shovel!");
+        }
     }
 
     public String toString() {
