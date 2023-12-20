@@ -125,13 +125,13 @@ public class Town {
         int rand = (int) (Math.random() * 4) + 1;
             if (rand == 1) {
                 System.out.println("You have found a crown!");
-                hunter.addItem("crown");
+                hunter.addTreasure("crown");
             } else if (rand == 2) {
                 System.out.println("You have found a trophy!");
-                hunter.addItem("trophy");
+                hunter.addTreasure("trophy");
             } else if (rand == 3) {
                 System.out.println("You have found gem!");
-                hunter.addItem("gem");
+                hunter.addTreasure("gem");
             } else {
                 System.out.println("You have found dust!");
             }
