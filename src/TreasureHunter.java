@@ -128,6 +128,7 @@ public class TreasureHunter {
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
             if (hunter.getGold() < 0) {
+                System.out.println("You lost the brawl!");
                 System.out.println("You have " + hunter.getGold());
                 System.out.println("You lose(ran out of gold)!");
                 choice = "x";
