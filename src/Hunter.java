@@ -8,6 +8,8 @@ public class Hunter {
     //instance variables
     private String hunterName;
     private String[] kit;
+
+    private String[] treasure;
     private int gold;
 
     /**
@@ -20,6 +22,7 @@ public class Hunter {
         this.hunterName = hunterName;
         kit = new String[100]; // only 5 possible items can be stored in kit
         gold = startingGold;
+        treasure = new String[100];
     }
 
     //Accessors
@@ -105,6 +108,26 @@ public class Hunter {
         return false;
     }
 
+    public boolean hasTreasureInKit(String Treasure) {
+        for (String tmpItem : treasure)
+            if (treasure.equals(tmpItem)) {
+                // early return
+                return true;
+            }
+
+        return false;
+    }
+
+    public boolean addTreasure(String treas) {
+        if (!hasTreasureInKit(treas)) {
+            int idx = emptyPositionInKit();
+            treasure[idx] = treas;
+            return true;
+        }
+        System.out.println("You have already found this treasure!");
+        return false;
+    }
+
     /**
      * Checks if the kit Array has the specified item.
      *
@@ -141,6 +164,19 @@ public class Hunter {
         return printableKit;
     }
 
+    public String getTreasure() {
+        String printableKit = "";
+        String space = " ";
+
+        for (String item : treasure) {
+            if (item != null) {
+                printableKit += "\033[0;35m" + item + "\033[0m"+ space;
+            }
+        }
+
+        return printableKit;
+    }
+
     /**
      * @return A string representation of the hunter.
      */
@@ -150,6 +186,7 @@ public class Hunter {
         if (!kitIsEmpty()) {
             str += " and " + getInventory();
         }
+        str += "Treasures found: " + getTreasure();
         return str;
     }
 
