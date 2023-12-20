@@ -18,7 +18,7 @@ public class Hunter {
      */
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
-        kit = new String[5]; // only 5 possible items can be stored in kit
+        kit = new String[100]; // only 5 possible items can be stored in kit
         gold = startingGold;
     }
 
@@ -101,7 +101,7 @@ public class Hunter {
             kit[idx] = item;
             return true;
         }
-
+        System.out.println("You have already found this item!");
         return false;
     }
 
