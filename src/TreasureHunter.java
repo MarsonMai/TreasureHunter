@@ -15,12 +15,14 @@ public class TreasureHunter {
     // instance variables
     private Town currentTown;
     private Hunter hunter;
+    private Shop shop;
     private boolean hardMode;
 
     private boolean easyMode;
     private boolean townSearched;
     private boolean goldSearched;
     private boolean samuraiMode;
+    private String hard;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -61,7 +63,7 @@ public class TreasureHunter {
         hunter = new Hunter(name, 10);
 
         System.out.print("Choose the mode((E)asy,(N)ormal,(H)ard,(T)est): ");
-        String hard = SCANNER.nextLine().toLowerCase();
+        hard = SCANNER.nextLine().toLowerCase();
         if (hard.equals("h")) {
             hardMode = true;
         } else if (hard.equals("t")) {
@@ -100,13 +102,15 @@ public class TreasureHunter {
         } else if (easyMode) {
             markdown = 0;
             toughness = 0.2;
-
         }
 
         // note that we don't need to access the Shop object
         // outside of this method, so it isn't necessary to store it as an instance
         // variable; we can leave it as a local variable
         Shop shop = new Shop(markdown);
+        if(hard.equals("s")){
+            shop.addToShop("\033[0;35m" + "Sword: " + "\033[0m" + 0 + " gold\n");
+        }
 
         // creating the new Town -- which we need to store as an instance
         // variable in this class, since we need to access the Town
@@ -128,28 +132,34 @@ public class TreasureHunter {
     private void showMenu() {
         String choice = "";
         while (!choice.equals("x")) {
-
-            System.out.println();
-            System.out.println(currentTown.getLatestNews());
-            System.out.println("***");
-            System.out.println(hunter);
-            System.out.println(currentTown);
-            System.out.println("(B)uy something at the shop.");
-            System.out.println("(S)ell something at the shop.");
-            System.out.println("(M)ove on to a different town.");
-            System.out.println("(L)ook for trouble!");
-            System.out.println("(H)unt for treasure!");
-            System.out.println("(D)ig for treasure!");
-            System.out.println("Give up the hunt and e(X)it.");
-            System.out.println();
-            System.out.print("What's your next move? ");
-            choice = SCANNER.nextLine().toLowerCase();
-            processChoice(choice);
-            if (hunter.getGold() < 0) {
-                System.out.println("You lost the brawl!");
-                System.out.println("You have " + hunter.getGold());
-                System.out.println("You lose(ran out of gold)!");
+            if(currentTown.end()){
+                System.out.println("Congratulations, you have found the last of the three treasures, you win!");
                 choice = "x";
+            }
+            else {
+
+                System.out.println();
+                System.out.println(currentTown.getLatestNews());
+                System.out.println("***");
+                System.out.println(hunter);
+                System.out.println(currentTown);
+                System.out.println("(B)uy something at the shop.");
+                System.out.println("(S)ell something at the shop.");
+                System.out.println("(M)ove on to a different town.");
+                System.out.println("(L)ook for trouble!");
+                System.out.println("(H)unt for treasure!");
+                System.out.println("(D)ig for treasure!");
+                System.out.println("Give up the hunt and e(X)it.");
+                System.out.println();
+                System.out.print("What's your next move? ");
+                choice = SCANNER.nextLine().toLowerCase();
+                processChoice(choice);
+                if (hunter.getGold() < 0) {
+                    System.out.println("You lost the brawl!");
+                    System.out.println("You have " + hunter.getGold());
+                    System.out.println("You lose(ran out of gold)!");
+                    choice = "x";
+                }
             }
         }
     }

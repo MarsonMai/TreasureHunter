@@ -23,7 +23,9 @@ public class Shop {
     // instance variables
     private double markdown;
     private Hunter customer;
-    private TreasureHunter treasureHunter;
+    private TreasureHunter treasureGuy;
+
+    private String inventory;
 
     /**
      * The Shop constructor takes in a markdown value and leaves customer null until one enters the shop.
@@ -33,6 +35,8 @@ public class Shop {
     public Shop(double markdown) {
         this.markdown = markdown;
         customer = null; // is set in the enter method
+        treasureGuy = new TreasureHunter();
+        inventory = "";
     }
 
     /**
@@ -86,17 +90,19 @@ public class Shop {
      * @return the string representing the shop's items available for purchase and their prices.
      */
     public String inventory() {
-        String str = "\033[0;35m" +  "Water: " + "\033[0m" + WATER_COST +" gold\n";
-        str += "\033[0;35m" +  "Rope: " + "\033[0m"  + ROPE_COST  +" gold\n";
-        str += "\033[0;35m" +  "Machete: " + "\033[0m" + MACHETE_COST +" gold\n";
-        str += "\033[0;35m" + "Horse: "  + "\033[0m" + HORSE_COST  +" gold\n";
-        str += "\033[0;35m" +  "Boat: " + "\033[0m"  + BOAT_COST + " gold\n" ;
-        str += "\033[0;35m" +  "Boots: " + "\033[0m"  + BOOTS_COST + " gold\n" ;
-        str += "\033[0;35m" +  "Shovel: " + "\033[0m"  + SHOVEL_COST + " gold\n" ;
-        if (treasureHunter.samReturn()) {
-            str += "\033[0;35m" +  "Sword: " + "\033[0m"  + SWORD_COST + " gold\n" ;
-        }
-        return str;
+        inventory = "";
+        inventory += "\033[0;35m" +  "Water: " + "\033[0m" + WATER_COST +" gold\n";
+        inventory += "\033[0;35m" +  "Rope: " + "\033[0m"  + ROPE_COST  +" gold\n";
+        inventory += "\033[0;35m" +  "Machete: " + "\033[0m" + MACHETE_COST +" gold\n";
+        inventory += "\033[0;35m" + "Horse: "  + "\033[0m" + HORSE_COST  +" gold\n";
+        inventory += "\033[0;35m" +  "Boat: " + "\033[0m"  + BOAT_COST + " gold\n" ;
+        inventory += "\033[0;35m" +  "Boots: " + "\033[0m"  + BOOTS_COST + " gold\n" ;
+        inventory += "\033[0;35m" +  "Shovel: " + "\033[0m"  + SHOVEL_COST + " gold\n" ;
+        return inventory;
+    }
+
+    public void addToShop(String item){
+        inventory += item;
     }
 
     /**

@@ -142,9 +142,12 @@ public class Town {
                 System.out.println("You have found dust!");
             }
             if(hunter.getTreasure().contains("gem") && hunter.getTreasure().contains("crown")  && hunter.getTreasure().contains("trophy")){
-                System.out.println("Congratulations, you have found the last of the three treasures, you win!");
                 gameEnd = true;
             }
+    }
+
+    public boolean end(){
+        return gameEnd;
     }
 
     public void dig() {
