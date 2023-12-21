@@ -141,12 +141,12 @@ public class Town {
             } else {
                 System.out.println("You have found dust!");
             }
-            if(hunter.getTreasure().contains("gem") && hunter.getTreasure().contains("crown")  && hunter.getTreasure().contains("trophy")){
-                gameEnd = true;
-            }
     }
 
     public boolean end(){
+        if(hunter.getTreasure().contains("gem") && hunter.getTreasure().contains("crown")  && hunter.getTreasure().contains("trophy")){
+            gameEnd = true;
+        }
         return gameEnd;
     }
 

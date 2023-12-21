@@ -123,7 +123,7 @@ public class Hunter {
 
     public boolean addTreasure(String treas) {
         if (!hasTreasureInKit(treas)) {
-            int idx = emptyPositionInKit();
+            int idx = emptyPositionInTreasury();
             treasure[idx] = treas;
             return true;
         }
@@ -234,6 +234,15 @@ public class Hunter {
     private int emptyPositionInKit() {
         for (int i = 0; i < kit.length; i++) {
             if (kit[i] == null) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+    private int emptyPositionInTreasury() {
+        for (int i = 0; i < treasure.length; i++) {
+            if (treasure[i] == null) {
                 return i;
             }
         }

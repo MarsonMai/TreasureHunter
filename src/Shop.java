@@ -37,6 +37,13 @@ public class Shop {
         customer = null; // is set in the enter method
         treasureGuy = new TreasureHunter();
         inventory = "";
+        inventory += "\033[0;35m" +  "Water: " + "\033[0m" + WATER_COST +" gold\n";
+        inventory += "\033[0;35m" +  "Rope: " + "\033[0m"  + ROPE_COST  +" gold\n";
+        inventory += "\033[0;35m" +  "Machete: " + "\033[0m" + MACHETE_COST +" gold\n";
+        inventory += "\033[0;35m" + "Horse: "  + "\033[0m" + HORSE_COST  +" gold\n";
+        inventory += "\033[0;35m" +  "Boat: " + "\033[0m"  + BOAT_COST + " gold\n" ;
+        inventory += "\033[0;35m" +  "Boots: " + "\033[0m"  + BOOTS_COST + " gold\n" ;
+        inventory += "\033[0;35m" +  "Shovel: " + "\033[0m"  + SHOVEL_COST + " gold\n" ;
     }
 
     /**
@@ -90,14 +97,6 @@ public class Shop {
      * @return the string representing the shop's items available for purchase and their prices.
      */
     public String inventory() {
-        inventory = "";
-        inventory += "\033[0;35m" +  "Water: " + "\033[0m" + WATER_COST +" gold\n";
-        inventory += "\033[0;35m" +  "Rope: " + "\033[0m"  + ROPE_COST  +" gold\n";
-        inventory += "\033[0;35m" +  "Machete: " + "\033[0m" + MACHETE_COST +" gold\n";
-        inventory += "\033[0;35m" + "Horse: "  + "\033[0m" + HORSE_COST  +" gold\n";
-        inventory += "\033[0;35m" +  "Boat: " + "\033[0m"  + BOAT_COST + " gold\n" ;
-        inventory += "\033[0;35m" +  "Boots: " + "\033[0m"  + BOOTS_COST + " gold\n" ;
-        inventory += "\033[0;35m" +  "Shovel: " + "\033[0m"  + SHOVEL_COST + " gold\n" ;
         return inventory;
     }
 

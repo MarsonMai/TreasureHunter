@@ -24,6 +24,8 @@ public class TreasureHunter {
     private boolean samuraiMode;
     private String hard;
 
+    private int count;
+
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -35,6 +37,7 @@ public class TreasureHunter {
         townSearched = false;
         goldSearched = false;
         samuraiMode = false;
+        count = 0;
     }
 
     /**
@@ -46,9 +49,6 @@ public class TreasureHunter {
         showMenu();
     }
 
-    private void endGame(){
-
-    }
 
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
@@ -74,6 +74,7 @@ public class TreasureHunter {
             hunter.addItem("boat");
             hunter.addItem("horse");
             hunter.addItem("boots");
+            hunter.addItem("shovel");
         } else if (hard.equals("e")) {
             easyMode = true;
             hunter.changeGold(10);
@@ -139,7 +140,9 @@ public class TreasureHunter {
             else {
 
                 System.out.println();
-                System.out.println(currentTown.getLatestNews());
+                if(count == 0) {
+                    System.out.println(currentTown.getLatestNews());
+                }
                 System.out.println("***");
                 System.out.println(hunter);
                 System.out.println(currentTown);
@@ -152,6 +155,7 @@ public class TreasureHunter {
                 System.out.println("Give up the hunt and e(X)it.");
                 System.out.println();
                 System.out.print("What's your next move? ");
+                count ++;
                 choice = SCANNER.nextLine().toLowerCase();
                 processChoice(choice);
                 if (hunter.getGold() < 0) {
