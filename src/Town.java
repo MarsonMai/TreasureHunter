@@ -101,8 +101,8 @@ public class Town {
         double noTroubleChance;
         if (toughTown) {
             noTroubleChance = 0.66;
-        } else if (treasureHunter.samReturn()) {
-            noTroubleChance = -100;
+        } else if (hunter.hasItemInKit("sword")) {
+            noTroubleChance = 0.33;
         } else {
             noTroubleChance = 0.33;
         }
@@ -112,13 +112,14 @@ public class Town {
         } else {
             printMessage = "\033[0;31m" + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n" + "\033[0m";
             int goldDiff = (int) (Math.random() * 10) + 1;
+            if (hunter.hasItemInKit("sword")) {
+                System.out.println("\033[0;31m" + "\nThe brawler, seeing your sword, realizes he picked a losing fight and gives you his gold " + "\033[0m");
+                noTroubleChance = -100;
+            }
             if (Math.random() > noTroubleChance) {
                 printMessage += "\033[0;31m" + "Okay, stranger! You proved yer mettle. Here, take my gold." + "\033[0m";
                 printMessage += "\033[0;31m" + "\nYou won the brawl and receive " + "\033[0;33m" + goldDiff  + " gold." + "\033[0m";
                 hunter.changeGold(goldDiff);
-                if (treasureHunter.samReturn()) {
-                    System.out.println("\033[0;31m" + "\nThe brawler, seeing your sword, realizes he picked a losing fight and gives you his gold " + "\033[0m");
-                }
             } else {
                 printMessage += "\033[0;31m" + "That'll teach you to go lookin' fer trouble in MY town! Now pay up!" + "\033[0m";
                 printMessage += "\033[0;31m" + "\nYou lost the brawl and pay "+ "\033[0;33m" + goldDiff  + " gold." + "\033[0m";
@@ -128,7 +129,7 @@ public class Town {
         }
     }
     public void hunt() {
-        int rand = (int) (Math.random() * 3) + 1;
+        int rand = (int) (Math.random() * 10) + 1;
             if (rand == 1) {
                 System.out.println("You have found a crown!");
                 hunter.addTreasure("crown");
