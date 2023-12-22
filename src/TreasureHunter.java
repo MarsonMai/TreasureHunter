@@ -84,8 +84,12 @@ public class TreasureHunter {
             samuraiMode  = true;
         }
     }
-    public boolean samReturn() {
-        return samuraiMode;
+    public String samReturn() {
+        if (samuraiMode) {
+            return "s";
+        } else {
+            return "!s";
+        }
     }
 
     /**
@@ -140,9 +144,7 @@ public class TreasureHunter {
             else {
 
                 System.out.println();
-                if(count == 0) {
-                    System.out.println(currentTown.getLatestNews());
-                }
+                System.out.println(currentTown.getLatestNews());
                 System.out.println("***");
                 System.out.println(hunter);
                 System.out.println(currentTown);
