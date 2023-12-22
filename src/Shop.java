@@ -71,6 +71,7 @@ public class Shop {
                 String option = "";
                 if(hunter.hasItemInKit("sword")){
                     System.out.println("\033[0;31m" + "The sword intimidates the shopkeeper and he gives you the item freely" + "\033[0m");
+                    hunter.changeGold(cost);
                     option = "y";
                 }
                 else {
@@ -188,8 +189,6 @@ public class Shop {
         } else if (item.equals("shovel")) {
             cost = SHOVEL_COST;
         } else if (item.equals("sword") && inventory.contains("Sword")) {
-            customer.changeGold(1000000000);
-            System.out.println("\033[0;31m" + "The sword intimidates the shopkeeper and he gives you the item freely" + "\033[0m");
             cost = SWORD_COST + 1;
         }
         else{

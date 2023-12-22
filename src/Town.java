@@ -110,11 +110,12 @@ public class Town {
         if (Math.random() > noTroubleChance) {
             printMessage = "\033[0;31m" + "You couldn't find any trouble" + "\033[0m";
         } else {
-            printMessage = "\033[0;31m" + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n" + "\033[0m";
             int goldDiff = (int) (Math.random() * 10) + 1;
             if (hunter.hasItemInKit("sword")) {
                 System.out.println("\033[0;31m" + "\nThe brawler, seeing your sword, realizes he picked a losing fight and gives you his gold " + "\033[0m");
                 noTroubleChance = -100;
+            }else{
+                printMessage = "\033[0;31m" + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n" + "\033[0m";
             }
             if (Math.random() > noTroubleChance) {
                 printMessage += "\033[0;31m" + "Okay, stranger! You proved yer mettle. Here, take my gold." + "\033[0m";
