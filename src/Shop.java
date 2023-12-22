@@ -65,8 +65,18 @@ public class Shop {
             if (cost == 0) {
                 System.out.println("We ain't got none of those.");
             } else {
-                System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
-                String option = SCANNER.nextLine().toLowerCase();
+                if(cost == 1){
+                    cost-= 1;
+                }
+                String option = "";
+                if(hunter.hasItemInKit("sword")){
+                    System.out.println("\033[0;31m" + "The sword intimidates the shopkeeper and he gives you the item freely" + "\033[0m");
+                    option = "y";
+                }
+                else {
+                    System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
+                    option = SCANNER.nextLine().toLowerCase();
+                }
 
                 if (option.equals("y")) {
                     buyItem(item);
@@ -132,6 +142,14 @@ public class Shop {
         }
     }
 
+    public boolean checkItemExist(String item){
+        boolean exist = false;
+        if(inventory.contains(item)){
+            exist = true;
+        }
+        return exist;
+    }
+
     /**
      * Determines and returns the cost of buying or selling an item.
      *
@@ -154,27 +172,30 @@ public class Shop {
      * @return The cost of the item or 0 if the item is not found.
      */
     public int getCostOfItem(String item) {
+        int cost = 0;
         if (item.equals("water")) {
-            return WATER_COST;
+            cost = WATER_COST;
         } else if (item.equals("rope")) {
-            return ROPE_COST;
+            cost = ROPE_COST;
         } else if (item.equals("machete")) {
-            return MACHETE_COST;
+            cost = MACHETE_COST;
         } else if (item.equals("horse")) {
-            return HORSE_COST;
+            cost = HORSE_COST;
         } else if (item.equals("boat")) {
-            return BOAT_COST;
+            cost = BOAT_COST;
         } else if (item.equals("boots")) {
-            return BOOTS_COST;
+            cost = BOOTS_COST;
         } else if (item.equals("shovel")) {
-            return SHOVEL_COST;
-        } else if (item.equals("sword")) {
+            cost = SHOVEL_COST;
+        } else if (item.equals("sword") && inventory.contains("Sword")) {
             customer.changeGold(1000000000);
             System.out.println("\033[0;31m" + "The sword intimidates the shopkeeper and he gives you the item freely" + "\033[0m");
-            return SWORD_COST;
-        } else {
-            return 0;
+            cost = SWORD_COST + 1;
         }
+        else{
+            cost = 0;
+        }
+        return cost;
     }
 
     /**

@@ -58,6 +58,9 @@ public class Hunter {
         }
 
         gold -= costOfItem;
+        if(item.equals("sword")){
+            gold++;
+        }
         addItem(item);
         return true;
     }
